@@ -9,28 +9,68 @@ const Banner = () => {
   return (
     <div className="carousel">
       <div id="slide1" className="carousel-item relative w-full h-[600px]">
-        <img src={img1} className="w-full"/>
+        <img src={img1} className="w-full rounded-xl"/>
+        <div className="absolute h-full flex items-center bg-gradient-to-r from-[#151515] rounded-xl">
+          <div className="text-white space-y-7 pl-24 w-1/2">
+            <h2 className="text-6xl">
+              Affordable Price For Car Servicing
+            </h2>
+            <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+            <button className="btn btn-accent mr-5">Descover More</button>
+            <button className="btn  glass">Latest Project</button>
+          </div>
+        </div>
         <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
           <a href="#slide4" className="btn btn-circle mr-5">❮</a>
           <a href="#slide2" className="btn btn-circle">❯</a>
         </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full h-[600px]">
-        <img src={img2} className="w-full"/>
+        <img src={img2} className="w-full rounded-xl"/>
+        <div className="absolute h-full flex items-center bg-gradient-to-r from-[#151515] rounded-xl">
+          <div className="text-white space-y-7 pl-24 w-1/2">
+            <h2 className="text-6xl">
+              Affordable Price For Car Servicing
+            </h2>
+            <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+            <button className="btn btn-accent mr-5">Descover More</button>
+            <button className="btn  glass">Latest Project</button>
+          </div>
+        </div>
         <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
           <a href="#slide1" className="btn btn-circle mr-5">❮</a>
           <a href="#slide3" className="btn btn-circle">❯</a>
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full h-[600px]">
-        <img src={img3} className="w-full"/>
+        <img src={img3} className="w-full rounded-xl"/>
+        <div className="absolute h-full flex items-center bg-gradient-to-r from-[#151515] rounded-xl">
+          <div className="text-white space-y-7 pl-24 w-1/2">
+            <h2 className="text-6xl">
+              Affordable Price For Car Servicing
+            </h2>
+            <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+            <button className="btn btn-accent mr-5">Descover More</button>
+            <button className="btn  glass">Latest Project</button>
+          </div>
+        </div>
         <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
           <a href="#slide2" className="btn btn-circle mr-5">❮</a>
           <a href="#slide4" className="btn btn-circle">❯</a>
         </div>
       </div>
       <div id="slide4" className="carousel-item relative w-full h-[600px]">
-        <img src={img4} className="w-full" />
+        <img src={img4} className="w-full rounded-xl"/>
+        <div className="absolute h-full flex items-center bg-gradient-to-r from-[#151515] rounded-xl">
+          <div className="text-white space-y-7 pl-24 w-1/2">
+            <h2 className="text-6xl">
+              Affordable Price For Car Servicing
+            </h2>
+            <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+            <button className="btn btn-accent mr-5">Descover More</button>
+            <button className="btn  glass">Latest Project</button>
+          </div>
+        </div>
         <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
           <a href="#slide3" className="btn btn-circle mr-5">❮</a>
           <a href="#slide1" className="btn btn-circle">❯</a>
