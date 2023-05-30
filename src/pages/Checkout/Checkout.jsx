@@ -21,17 +21,16 @@ const Checkout = () => {
       service_Id: _id,
     };
     fetch("http://localhost:5000/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(orderDetails),
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            if (data.insertedId) {
-                alert("Order Placed Successfully");
-            }
-            }
-        );
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Order Placed Successfully");
+        }
+      });
   };
 
   return (
