@@ -45,6 +45,11 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, []);
+  // signout function
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  }
   // create a authInfo object to pass the context
   const authInfo = {
     user,
@@ -52,6 +57,7 @@ const AuthProvider = ({ children }) => {
     loading,
     signUp,
     login,
+    logOut,
   };
   // return the context provider with the authInfo object
   return (
