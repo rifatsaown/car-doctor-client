@@ -14,8 +14,8 @@ const Bookings = () => {
   }, [url]);
 
   const handleDelete = (id) => {
-    const confirm = window.confirm("Are you sure?");
-    if (confirm) {
+    const proceed = confirm("Are you sure?");
+    if (proceed) {
       fetch(`http://localhost:5000/bookings/${id}`, {
         method: "DELETE",
       })
@@ -27,6 +27,27 @@ const Bookings = () => {
             alert("Deleted Successfully");
             const remaining = bookings.filter((booking) => booking._id !== id);
             setBookings(remaining);
+          }
+        });
+    }
+  };
+  const handleBookingConfirm = (id) => {
+    const proceed = confirm("Are you sure?");
+    if (proceed) {
+      fetch(`http://localhost:5000/bookings/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "Confirmed" }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount > 0) {
+            alert("Confirmed Successfully");
+            const remaining = bookings.filter((booking) => booking._id !== id);
+            const confirmed = bookings.find((booking) => booking._id === id);
+            confirmed.status = "Confirmed";
+            const newBookings = [...remaining, confirmed];
+            setBookings(newBookings);
           }
         });
     }
@@ -54,6 +75,7 @@ const Bookings = () => {
                 key={booking._id}
                 booking={booking}
                 handleDelete={handleDelete}
+                handleBookingConfirm={handleBookingConfirm}
               />
             ))}
           </tbody>
