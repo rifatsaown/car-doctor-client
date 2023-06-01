@@ -11,7 +11,7 @@ const Bookings = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBookings(data));
-  }, []);
+  }, [url]);
 
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure?");

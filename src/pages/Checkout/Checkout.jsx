@@ -64,8 +64,9 @@ const Checkout = () => {
               type="text"
               placeholder="email"
               name="email"
+              disabled
               defaultValue={user?.email}
-              className="input input-bordered"
+              className="input input-bordered "
             />
           </div>
           <div className="form-control">
