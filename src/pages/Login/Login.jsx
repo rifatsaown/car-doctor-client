@@ -1,9 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname  || '/';
   // Colect the login function from the AuthContext
   const { login } = useContext(AuthContext);
   // Create a function to handle the login
@@ -15,12 +18,13 @@ const Login = () => {
     login(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        if (user) {
+          navigate(from , { replace: true })
+        }
+        
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.error(error);
       });
   };
 
