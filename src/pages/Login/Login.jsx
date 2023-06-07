@@ -2,15 +2,17 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 import { AuthContext } from "../../provider/AuthProvider";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname  || '/';
+  const from = location.state?.from?.pathname || "/";
   // Colect the login function from the AuthContext
   const { login } = useContext(AuthContext);
   // Create a function to handle the login
   const handleSubmit = (e) => {
+    console.log("clicked");
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -18,10 +20,9 @@ const Login = () => {
     login(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        if (user) {
-          navigate(from , { replace: true })
-        }
-        
+        console.log(user);
+        // Navigate to the page the user was trying to access
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -66,12 +67,13 @@ const Login = () => {
                 <button className="btn btn-accent">Login</button>
               </div>
               <p className="text-center mt-4">
-                New to Car Doctor?{" "}
+                New to Car Doctor?
                 <Link to="/signup" className="text-accent font-bold">
                   Sign Up
                 </Link>
               </p>
             </form>
+            <SocialLogin from={from}/>
           </div>
         </div>
       </div>

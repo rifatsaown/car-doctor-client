@@ -6,11 +6,14 @@
 - DaisyUI
 - React Icons
 
+## Live Link
 
+https://car-doctor-6a4c0.web.app/
 
 ### Recommend using [yarn](https://yarnpkg.com/) as the package manager.
 
 #### Step 1: Clone the repository
+
 ```bash
 git clone https://github.com/Wizard-Squad/react-router-daisyiu-starter.git
 ```

@@ -9,6 +9,8 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
       .then(() => {
+        // Remove the JWT from the local storage
+        localStorage.removeItem("access-token");
         alert("Log Out Successfully");
       })
       .catch((err) => {

@@ -20,7 +20,7 @@ const Checkout = () => {
       serviceTitle: title,
       service_Id: _id,
     };
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://car-doctor-server-cyan-iota.vercel.app/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderDetails),

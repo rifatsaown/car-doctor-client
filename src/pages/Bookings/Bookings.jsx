@@ -1,29 +1,41 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import BookingsRow from "./BookingsRow";
 
 const Bookings = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
 
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://car-doctor-server-cyan-iota.vercel.app/bookings?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
       .then((res) => res.json())
-      .then((data) => setBookings(data));
-  }, [url]);
+      .then((data) => {
+        if (!data?.error) {
+          setBookings(data);
+        } else {
+          navigate("/login");
+          console.log(data);
+        }
+      });
+  }, [url, navigate]);
 
   const handleDelete = (id) => {
     const proceed = confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
+      fetch(`https://car-doctor-server-cyan-iota.vercel.app/bookings/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+          console.log(data);
           if (data.deletedCount > 0) {
-            
             alert("Deleted Successfully");
             const remaining = bookings.filter((booking) => booking._id !== id);
             setBookings(remaining);
@@ -34,7 +46,7 @@ const Bookings = () => {
   const handleBookingConfirm = (id) => {
     const proceed = confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
+      fetch(`https://car-doctor-server-cyan-iota.vercel.app/bookings/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "Confirmed" }),
